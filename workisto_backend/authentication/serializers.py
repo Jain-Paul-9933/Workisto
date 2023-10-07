@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CustomUser,UserProfile
+from .models import CustomUser,UserProfile,WorkerProfile
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
@@ -19,8 +19,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['user']={
             'username':user.username,
             'email':user.email,
-            'password':user.email,
-            'phone_number':user.password,
+            'password':user.password,
+            'phone_number':user.phone_number,
             'is_active':user.is_active,
             'is_staff':user.is_staff,
             'is_superuser':user.is_superuser,
@@ -32,4 +32,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model=UserProfile
-        fields='__all__'
+        exclude = ('id','user')
+
+class WorkerProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=WorkerProfile
+        exclude= ('id','user')
