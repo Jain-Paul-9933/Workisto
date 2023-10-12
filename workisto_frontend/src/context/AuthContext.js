@@ -23,7 +23,10 @@ export const AuthProvider = ({ children }) => {
         formData
       );
       console.log("User Registion success", response.data);
-      navigate("/user_login");
+      if (response.data.is_staff === false)
+        navigate("/user_login");
+      else
+        navigate("/worker_login")
     } catch (error) {
       console.error("User Registion failed", error);
       navigate("/user_registration");
@@ -51,7 +54,12 @@ export const AuthProvider = ({ children }) => {
         "Authorization"
       ] = `Bearer ${response.data.access}`;
       console.log("Login Succssfull");
-      navigate("/");
+      if (response.data.is_staff === false && response.data.is_superuser === false )
+        navigate("/");
+      else if (response.data.is_staff === true && response.data.is_superuser === false )
+        navigate("/worker")
+      else
+        navigate("/admin")
     } catch (error) {
       console.error("Login Failed");
       dispatch(clearUSer());

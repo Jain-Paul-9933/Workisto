@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { clearUSer } from "../../slices/userSlice";
 
-const HomePage = () => {
+const WorkerHomePage = () => {
 
   const dispatch=useDispatch()
   
@@ -14,7 +14,7 @@ const HomePage = () => {
   const handleLogout=()=>{
 
     dispatch(clearUSer())
-    window.location.href = "/user_login";
+    window.location.href = "/worker_login";
     // navigate('/user_login')
 
   }
@@ -23,16 +23,16 @@ const HomePage = () => {
   console.log(user)
   return (
     <div>
-      <nav className="bg-blue-500 p-4">
+      <nav className="bg-blue-600 p-4">
         <div className="container mx-auto flex items-center justify-between">
-          <Link to="/" className="text-white text-2xl font-kaushan">
-            Workisto
+          <Link to="/worker" className="text-white text-2xl font-kaushan">
+            Workisto(worker)
           </Link>
           <ul className="flex space-x-4">
             {user ? ( // Check if the user is logged in
               <>
                 <li>
-                  <Link to="/profile" className="text-white hover:text-gray-200">
+                  <Link to="/worker_profile" className="text-white hover:text-gray-200">
                     Hi, {user.username}
                   </Link>
                 </li>
@@ -46,7 +46,7 @@ const HomePage = () => {
               <>
                 <li>
                   <Link
-                    to="/user_registration"
+                    to="/worker_registration"
                     className="text-white hover:text-gray-200"
                   >
                     Register
@@ -54,7 +54,7 @@ const HomePage = () => {
                 </li>
                 <li>
                   <Link
-                    to="/user_login"
+                    to="/worker_login"
                     className="text-white hover:text-gray-200"
                   >
                     Login
@@ -76,4 +76,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default WorkerHomePage;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
-const UserLogin = () => {
+const WorkerLogin = () => {
   const { loginUser } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
@@ -26,7 +26,7 @@ const UserLogin = () => {
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded shadow-md w-96"
       >
-        <h2 className="text-2xl font-semibold mb-6">Welcome, back !!!</h2>
+        <h2 className="text-2xl font-semibold mb-6">Lets begin today !!! </h2>
         <div className="mb-4">
           <input
             type="email"
@@ -49,13 +49,13 @@ const UserLogin = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-400 text-white py-2 rounded hover:bg-blue-500 focus:outline-none focus:ring focus:border-blue-300"
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
         >
           Login
         </button>
         <p className="mt-4">
           Don't have an account?{" "}
-          <Link to="/user_registration" className="text-blue-500">
+          <Link to="/worker_registration" className="text-blue-500">
             Register here
           </Link>
         </p>
@@ -64,4 +64,4 @@ const UserLogin = () => {
   );
 };
 
-export default UserLogin;
+export default WorkerLogin;
